@@ -24,13 +24,18 @@ class GameScene: SKScene {
         backgroundImage.name = "button0"
         self.addChild(backgroundImage)
                
-        /*let button0 = SKSpriteNode(imageNamed: "button1.jpg")
+        //let fadeOut = SKAction.fadeAlpha(to: 0.0, duration: 2.0)
+        //let fadeIn = SKAction.fadeAlpha(to: 1.0, duration: 2.0)
+        
+        let button0 = SKSpriteNode(imageNamed: "button0.jpg")
         button0.name = "button0"
-        button0.position = CGPoint(x: 344, y: 227)
-        button0.size = CGSize(width: 73, height: 73)
-        button0.isUserInteractionEnabled = false
-        self.addChild(button0)*/
-
+        button0.setScale(1.0)
+        button0.position = .zero
+        button0.zPosition = 20
+        button0.alpha = 0.0
+        addChild(button0)
+        button0.run(SKAction.fadeIn(withDuration: 2.0))
+       
         
         self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
         if let label = self.label {
