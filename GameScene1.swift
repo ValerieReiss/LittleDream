@@ -72,10 +72,10 @@ class GameScene1: SKScene {
         
         //bubbles bubbles
         
-        if let particles = SKEmitterNode(fileNamed: "Starfield"){
-                    particles.position = CGPoint (x: 1000, y: 0)
-                    particles.advanceSimulationTime(60)
-                    particles.zPosition = -1
+        if let particles = SKEmitterNode(fileNamed: "Bubbles"){
+                    particles.position = CGPoint (x: 300, y: 0)
+                    particles.advanceSimulationTime(10)
+                    particles.zPosition = 5
                     addChild(particles)
                 }
     }
