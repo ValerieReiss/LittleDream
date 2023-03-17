@@ -1,0 +1,45 @@
+//
+//  FishNode.swift
+//  LittleDream
+//
+//  Created by Valerie on 26.02.23.
+//
+
+import SpriteKit
+
+class FishNode: SKSpriteNode {
+    var type: FishType
+    
+    init(type: FishType, startPosition: CGPoint, xOffset: CGFloat, moveStraight: Bool){
+        self.type = type
+        
+        let texture = SKTexture(imageNamed: type.name)
+        super.init(texture: texture, color: .white, size: texture.size())
+        
+        physicsBody = SKPhysicsBody(texture: texture, size: texture.size())
+        name = "fish"
+        position = CGPoint(x: 2500.0 + xOffset, y: 700)
+        
+        configureMovement(moveStraight)
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("LOL NO")
+    }
+    
+    func configureMovement(_ moveStraight: Bool){
+        let path = UIBezierPath()
+        path.move(to: .zero)
+        
+        if moveStraight {
+            path.addLine(to: CGPoint(x: -10000, y: 0))
+        } else {
+            path.addCurve(to: CGPoint(x: -3500, y: 0), controlPoint1: CGPoint(x: 0, y: -position.y * 4), controlPoint2: CGPoint(x: -1000, y: -position.y))
+        }
+        
+        let movement = SKAction.follow(path.cgPath, asOffset: true, orientToPath: true, speed: type.speed)
+        let sequence = SKAction.sequence([movement, .removeFromParent()])
+        run (sequence)
+    }
+}

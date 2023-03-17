@@ -1,0 +1,14 @@
+[
+    {
+         "name": "fish1",
+         "speed": 600,
+    },
+    {
+        "name": "fish2",
+        "speed": 400,
+    },
+    {
+        "name": "fish3",
+        "speed": 200,
+    }
+]
