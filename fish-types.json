@@ -1,14 +1,22 @@
 [
     {
-         "name": "fish1",
+         "name": "swarmfish1",
          "speed": 600,
     },
     {
-        "name": "fish2",
+        "name": "swarmfish2",
         "speed": 400,
     },
     {
-        "name": "fish3",
+        "name": "swarmfish3",
         "speed": 200,
+    },
+    {
+        "name": "swarmfish4",
+        "speed": 300,
+    },
+    {
+        "name": "swarmfish5",
+        "speed": 500,
     }
 ]

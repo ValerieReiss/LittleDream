@@ -1,0 +1,109 @@
+[
+    {
+        "name": "small",
+        "fishes": [
+            {
+                "xOffset": 8,
+                "moveStraight": true
+            },
+            {
+                "xOffset": 0,
+                "moveStraight": true
+            },
+            {
+                "xOffset": 2,
+                "moveStraight": true
+            }
+        ]
+    },
+    {
+        "name": "medium",
+        "fishes": [
+            {
+                "xOffset": 0,
+                "moveStraight": false
+            },
+            {
+                "xOffset": 2,
+                "moveStraight": false
+            },
+            {
+                "xOffset": 4,
+                "moveStraight": false
+            },
+            {
+                "xOffset": 1,
+                "moveStraight": false
+            },
+            {
+                "xOffset": 3,
+                "moveStraight": false
+            },
+            {
+                "xOffset": 5,
+                "moveStraight": false
+            },
+        ]
+    },
+    {
+        "name": "large",
+        "fishes": [
+            {
+                "xOffset": 0,
+                "moveStraight": true
+            },
+            {
+                "xOffset": 1,
+                "moveStraight": true
+            },
+            {
+                "xOffset": 2,
+                "moveStraight": true
+            },
+            {
+                "xOffset": 3,
+                "moveStraight": true
+            },
+            {
+                "xOffset": 1,
+                "moveStraight": true
+            },
+            {
+                "xOffset": 2,
+                "moveStraight": true
+            },
+            {
+                "xOffset": 3,
+                "moveStraight": true
+            },
+            {
+                "xOffset": 8,
+                "moveStraight": true
+            },
+            {
+                "xOffset": 8,
+                "moveStraight": false
+            },
+            {
+                "xOffset": 8,
+                "moveStraight": false
+            },
+            {
+                "xOffset": 9,
+                "moveStraight": false
+            },
+            {
+                "xOffset": 9,
+                "moveStraight": false
+            },
+            {
+                "xOffset": 9,
+                "moveStraight": false
+            },
+        ]
+    },
+    {
+        "name": "random",
+        "fishes": []
+    }
+]

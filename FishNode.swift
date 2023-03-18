@@ -15,7 +15,7 @@ class FishNode: SKSpriteNode {
         
         let texture = SKTexture(imageNamed: type.name)
         super.init(texture: texture, color: .white, size: texture.size())
-        
+        zPosition = 10
         physicsBody = SKPhysicsBody(texture: texture, size: texture.size())
         name = "fish"
         position = CGPoint(x: 2500.0 + xOffset, y: 700)

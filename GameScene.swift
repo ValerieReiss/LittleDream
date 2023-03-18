@@ -15,7 +15,7 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        CGPointMake(0.5, 0.5)
+        //CGPointMake(0.5, 0.5)
         
         let backgroundImage = SKSpriteNode(imageNamed: "backgroundImage")
         backgroundImage.position = .zero
@@ -50,6 +50,7 @@ class GameScene: SKScene {
             let location = touch.location(in: self)
             let nodeTouched = atPoint(location)
             if nodeTouched.name == "button0" {
+                print("touched")
                 self.view?.presentScene(GameScene1(size: self.size),
                                         transition: .crossFade(withDuration: 2))
                 run("sound-button")

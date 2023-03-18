@@ -70,15 +70,50 @@ class GameScene1: SKScene {
         
         
         
-        //bubbles bubbles
-        
+        //Bubbles
         if let particles = SKEmitterNode(fileNamed: "Bubbles"){
-                    particles.position = CGPoint (x: 300, y: 0)
+                    particles.position = CGPoint (x: 500, y: -50)
                     particles.advanceSimulationTime(10)
                     particles.zPosition = 5
                     addChild(particles)
                 }
+        
+        //Medusa
+        if let particles = SKEmitterNode(fileNamed: "particleMedusa"){
+                    particles.position = CGPoint (x: 2000, y: -50)
+                    particles.advanceSimulationTime(10)
+                    particles.zPosition = 5
+                    addChild(particles)
+                }
+        //SwarmFishes
+        swarmFishes()
+        
+        //SwarmMermaids
+        swarmMermaids()
+        
     }
+
+    func swarmFishes(){
+        let swarmArray = ["particleSwarmfish", "particleSwarmfish1", "particleSwarmfish2", "particleSwarmfish3", "particleSwarmfish4"]
+
+        let timer = Timer.scheduledTimer(withTimeInterval: 40.0, repeats: true) { timer in
+                    let randomInt = Int.random(in: 0..<5)
+                    if let particles = SKEmitterNode(fileNamed: "particleSwarmfish"){
+                        particles.particleTexture = SKTexture(imageNamed: swarmArray[randomInt])
+                        particles.position = CGPoint (x: 0, y: Int.random(in: 100..<1000))
+                        particles.advanceSimulationTime(10)
+                        particles.zPosition = 10
+                        self.addChild(particles)
+                        print("geadded")
+                        let timer2 = Timer.scheduledTimer(withTimeInterval: 40.0, repeats: false) { timer2 in
+                            particles.removeFromParent()
+                            print("entfernt")
+                        }
+                    }
+            }
+    }
+    
+    
     
     override func update(_ currentTime: CFTimeInterval) {
         for child in children {
@@ -90,7 +125,7 @@ class GameScene1: SKScene {
                 }
         let activeFishes = children.compactMap { $0 as? FishNode}
         if activeFishes.isEmpty {
-            createSwarm()
+           // createSwarm()
         }
 
     }
