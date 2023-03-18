@@ -28,14 +28,14 @@ class GameScene1: SKScene {
         addChild(backgroundImage1)
         
         let backgroundImage2 = SKSpriteNode(imageNamed:"backgroundAqua2")
-        backgroundImage2.zPosition = 3
+        backgroundImage2.zPosition = 2
         backgroundImage2.position = CGPointMake(self.size.width/2, self.size.height/2)
         backgroundImage2.size = CGSize(width: self.size.width, height: self.size.height)
         backgroundImage2.alpha = 0.0
         addChild(backgroundImage2)
         
         let backgroundImage3 = SKSpriteNode(imageNamed:"backgroundFlash")
-        backgroundImage3.zPosition = 2
+        backgroundImage3.zPosition = 3
         backgroundImage3.position = CGPointMake(self.size.width/2, self.size.height/2)
         backgroundImage3.size = CGSize(width: self.size.width, height: self.size.height)
         backgroundImage3.alpha = 0.0
@@ -61,6 +61,20 @@ class GameScene1: SKScene {
         backgroundImage3.run(redo3)
         
         
+        //forground
+        let seegras = SKSpriteNode(imageNamed: "seegras.png")
+        seegras.zPosition = 4
+        seegras.position = CGPoint(x: 300, y: 50)
+        seegras.setScale(3)
+        addChild(seegras)
+        //forground castle
+        let seegrasSchloss = SKSpriteNode(imageNamed: "seegrasSchloss.png")
+        seegrasSchloss.zPosition = 10
+        seegrasSchloss.position = CGPoint(x: 2300, y: 500)
+        seegrasSchloss.alpha = 0.8
+        seegrasSchloss.setScale(4)
+        addChild(seegrasSchloss)
+        
         
         //Bubbles
         if let bubbles = SKEmitterNode(fileNamed: "Bubbles"){
@@ -84,6 +98,14 @@ class GameScene1: SKScene {
             seepferd.advanceSimulationTime(10)
             seepferd.zPosition = 5
             addChild(seepferd)
+        }
+        
+        //Turtle
+        if let turtle = SKEmitterNode(fileNamed: "particleTurtle"){
+            turtle.position = CGPoint (x: 0, y: 200)
+            turtle.advanceSimulationTime(10)
+            turtle.zPosition = 4
+            addChild(turtle)
         }
         
         
@@ -130,6 +152,7 @@ class GameScene1: SKScene {
         
         let fatFishArray = ["fish1", "fish2", "fish3", "fish4", "fish5", "fish6", "fish8"]
         if let particles0 = SKEmitterNode(fileNamed: "particleFatFish"){
+                particles0.particleBirthRate = 0.02
                 particles0.particleTexture = SKTexture(imageNamed: fatFishArray[0])
                 particles0.position = CGPoint (x: 0, y: Int.random(in: 760..<860))
                 particles0.advanceSimulationTime(10)
@@ -176,6 +199,7 @@ class GameScene1: SKScene {
         if let particles6 = SKEmitterNode(fileNamed: "particleFatFish"){
                 particles6.particleBirthRate = 0.07
                 particles6.particleTexture = SKTexture(imageNamed: fatFishArray[6])
+            particles6.setScale(0.8)
                 particles6.position = CGPoint (x: 0, y: Int.random(in: 150..<250))
                 particles6.advanceSimulationTime(10)
                 particles6.zPosition = 5
