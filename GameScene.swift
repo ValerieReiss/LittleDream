@@ -15,7 +15,7 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        //CGPointMake(0.5, 0.5)
+        CGPointMake(0.5, 0.5)
         
         let backgroundImage = SKSpriteNode(imageNamed: "backgroundImage")
         backgroundImage.position = .zero
