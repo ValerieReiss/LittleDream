@@ -10,8 +10,8 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    private var magicStick : SKEmitterNode?
     private var label : SKLabelNode?
-    //private var spinnyNode : SKShapeNode?
     
     override func didMove(to view: SKView) {
         
@@ -24,8 +24,6 @@ class GameScene: SKScene {
         backgroundImage.name = "button0"
         self.addChild(backgroundImage)
                
-        //let fadeOut = SKAction.fadeAlpha(to: 0.0, duration: 2.0)
-        //let fadeIn = SKAction.fadeAlpha(to: 1.0, duration: 2.0)
         
         /*
         let button0 = SKSpriteNode(imageNamed: "button0.jpg")
@@ -37,12 +35,18 @@ class GameScene: SKScene {
         self.addChild(button0)
         button0.run(SKAction.fadeIn(withDuration: 2.0))
        */
-        
+        /*
         self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
         if let label = self.label {
-            label.alpha = 0.0
             label.name = "button0"
-            label.run(SKAction.fadeIn(withDuration: 2.0))
+        }*/
+        
+        self.magicStick = SKEmitterNode(fileNamed: "MyParticle.sks")
+        
+        if let magicStick = self.magicStick {
+            //magicStick.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
+            magicStick.particleTexture = SKTexture(imageNamed: "magicstick.png")
+            magicStick.run(SKAction.sequence([SKAction.fadeOut(withDuration: 0.5), SKAction.removeFromParent()]))
         }
     }
     
@@ -53,7 +57,7 @@ class GameScene: SKScene {
             if nodeTouched.name == "button0" {
                 print("touched")
                 self.view?.presentScene(GameScene1(size: self.size),
-                                        transition: .crossFade(withDuration: 2))
+                                transition: .crossFade(withDuration: 4))
                 run("sound-button")
             } /*else if nodeTouched.name == "button1" {
                 self.view?.presentScene(GameScene2(size: self.size),
@@ -61,6 +65,27 @@ class GameScene: SKScene {
                 run("sound-button")*/
             }
         }
+    
+    func touchDown(atPoint pos : CGPoint) {
+        if let n = self.magicStick?.copy() as! SKEmitterNode? {
+            n.position = pos
+            self.addChild(n)
+        }
+    }
+    
+    func touchMoved(toPoint pos : CGPoint) {
+        if let n = self.magicStick?.copy() as! SKEmitterNode? {
+            n.position = pos
+            self.addChild(n)
+        }
+    }
+    
+    func touchUp(atPoint pos : CGPoint) {
+        if let n = self.magicStick?.copy() as! SKEmitterNode? {
+            n.position = pos
+            self.addChild(n)
+        }
+    }
     
     func run(_ fileName: String){
                 run(SKAction.playSoundFileNamed(fileName, waitForCompletion: true))

@@ -10,7 +10,18 @@ import GameplayKit
 
 class GameScene1: SKScene {
 
+    private var magicStick : SKEmitterNode?
+    
     override func didMove(to view: SKView) {
+        
+        self.magicStick = SKEmitterNode(fileNamed: "MyParticle.sks")
+        if let magicStick = self.magicStick {
+            magicStick.particleTexture = SKTexture(imageNamed: "magicstick.png")
+            magicStick.setScale(4.0)
+            magicStick.zPosition = 20
+            magicStick.run(SKAction.sequence([SKAction.fadeOut(withDuration: 0.5), SKAction.removeFromParent()]))
+        }
+        
         CGPointMake(0.5, 0.5)
         physicsWorld.gravity = .zero
         
@@ -141,13 +152,7 @@ class GameScene1: SKScene {
             addChild(mermaid2)
         }
         
-        
-        
-        
-        
-        
-        
-        
+    
         //FATFISH from left
         
         let fatFishArray = ["fish1", "fish2", "fish3", "fish4", "fish5", "fish6", "fish8"]
@@ -250,12 +255,47 @@ class GameScene1: SKScene {
         
     }
 
-    override func update(_ currentTime: CFTimeInterval) {
-    }
+    override func update(_ currentTime: CFTimeInterval) { }
    
+    func touchDown(atPoint pos : CGPoint) {
+        if let n = self.magicStick?.copy() as! SKEmitterNode? {
+            n.position = pos
+            self.addChild(n)
+        }
+    }
+    
+    func touchMoved(toPoint pos : CGPoint) {
+        if let n = self.magicStick?.copy() as! SKEmitterNode? {
+            n.position = pos
+            self.addChild(n)
+        }
+    }
+    
+    func touchUp(atPoint pos : CGPoint) {
+        if let n = self.magicStick?.copy() as! SKEmitterNode? {
+            n.position = pos
+            self.addChild(n)
+        }
+    }
     
     func run(_ fileName: String){
                 run(SKAction.playSoundFileNamed(fileName, waitForCompletion: true))
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
     
 }
